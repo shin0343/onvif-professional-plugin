@@ -1,0 +1,14 @@
+{
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '$CLAUDE_NOTIFICATION' | python3 -c \"\nimport sys, json\ntry:\n    data = json.load(sys.stdin)\n    prompt = data.get('prompt', '')\n    keywords = ['onvif', 'profile s', 'profile t', 'profile g', 'profile c', 'profile a', 'profile d', 'profile m', 'profile q', 'rtsp', 'onvif wsdl', 'conformance', '출입통제', '카메라 연동', 'nvr', 'vms', 'add-on', 'addon', 'tls configuration', 'profile policy', 'wsdl', 'h.265', 'h.264', 'ptz', '적합성', '프로필']\n    lp = prompt.lower()\n    if any(k in lp for k in keywords):\n        print(json.dumps({'notification': 'ONVIF 관련 질문이 감지되었습니다.\\n사용 가능한 스킬:\\n• /onvif-pro:check-profile [장치유형] — 프로필 추천\\n• /onvif-pro:diagnose [증상] — 문제 진단\\n• /onvif-pro:spec-lookup [서비스명] — WSDL/사양 조회\\n• /onvif-pro:design-system [요구사항] — 시스템 설계\\n• /onvif-pro:conformance-check — 적합성 체크리스트\\n• /onvif-pro:profile-policy [주제] — Policy/Add-on 개념'}))\nexcept:\n    pass\n\""
+          }
+        ]
+      }
+    ]
+  }
+}
