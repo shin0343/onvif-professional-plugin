@@ -1,82 +1,82 @@
 ---
 name: design-system
-description: 고객 요구사항을 바탕으로 ONVIF 기반 보안 시스템 아키텍처를 설계합니다. 예: /onvif-pro:design-system 공장 CCTV 50채널 + 출입통제 10개 도어 + AI 분석, /onvif-pro:design-system 소규모 오피스 카메라 5대 암호화 통신 필수
+description: Designs an ONVIF-based security system architecture from customer requirements. Examples: /onvif-pro:design-system factory 50-channel CCTV + 10-door access control + AI analytics, /onvif-pro:design-system small office 5 cameras with mandatory encrypted communication
 ---
 
 # ONVIF System Design Skill
 
-`$ARGUMENTS`에 설명된 요구사항을 분석하여 최적의 ONVIF 기반 보안 시스템 아키텍처를 설계합니다.
+Analyzes the requirements in `$ARGUMENTS` and produces an optimal ONVIF-based security system architecture.
 
-## 설계 방법론
+## Design Methodology
 
-### 1단계: 요구사항 분석
+### Step 1: Requirements Analysis
 
-`$ARGUMENTS`에서 파악할 사항:
-- **규모**: 채널 수, 도어 수, 장치 수
-- **기능**: 스트리밍, 녹화, 출입통제, 분석, 알림
-- **기술 요구**: 해상도, 코덱, 보안 수준, 클라우드 연동 여부
-- **환경**: 네트워크 구성, 대역폭 제한
+Extract the following from `$ARGUMENTS`:
+- **Scale**: number of channels, doors, and devices
+- **Functions**: streaming, recording, access control, analytics, notifications
+- **Technical requirements**: resolution, codec, security level, cloud integration
+- **Environment**: network topology, bandwidth constraints
 
-### 2단계: 장치 레이어별 프로필 선택
+### Step 2: Per-Layer Profile Selection
 
-**영상 장치:**
-- IP 카메라(기본) → Profile S 필수
-- H.265/고급 카메라 → Profile T (S 대체 또는 병행)
-- SD카드 내장 녹화 → Profile G 추가
-- AI 분석 카메라 → Profile M 추가
-- NVR/VMS 클라이언트 → 연결 카메라 프로필에 맞춤
+**Video devices:**
+- Standard IP camera → Profile S (required)
+- H.265 / advanced camera → Profile T (replaces or supplements S)
+- Camera with built-in SD card recording → add Profile G
+- AI analytics camera → add Profile M
+- NVR/VMS client → match the profiles supported by connected cameras
 
-**출입통제 장치:**
-- 출입통제 패널 → Profile C
-- 카드/생체인식 리더기 → Profile D
-- ACS 관리 소프트웨어 → Profile A
+**Access control devices:**
+- Access control panel → Profile C
+- Card / biometric reader → Profile D
+- ACS management software → Profile A
 
-**보안 레이어:**
-- 암호화 통신 필요 → TLS Configuration Add-on
-- 클라우드 연동 → Cloud Integration Service
-- 원격 관리 → Uplink Service
+**Security layer:**
+- Encrypted communication required → TLS Configuration Add-on
+- Cloud integration → Cloud Integration Service
+- Remote management → Uplink Service
 
-### 3단계: 대역폭 가이드
+### Step 3: Bandwidth Reference Guide
 
-| 코덱 | 해상도 | 대역폭(30fps) |
-|------|--------|--------------|
-| H.264 | 1080p | 4~8 Mbps |
-| H.265 | 1080p | 2~4 Mbps |
-| H.264 | 4K | 15~25 Mbps |
-| H.265 | 4K | 8~15 Mbps |
+| Codec | Resolution | Bandwidth @ 30fps |
+|-------|------------|-------------------|
+| H.264 | 1080p | 4–8 Mbps |
+| H.265 | 1080p | 2–4 Mbps |
+| H.264 | 4K | 15–25 Mbps |
+| H.265 | 4K | 8–15 Mbps |
 
-### 4단계: 출력 형식
+### Step 4: Output Format
 
-설계 결과를 다음 형식으로 제공하세요:
+Deliver the design proposal in the following format:
 
 ```
-## ONVIF 시스템 설계 제안
+## ONVIF System Design Proposal
 
-**요구사항 요약:** [입력값 분석]
+**Requirements summary:** [analysis of input]
 
-### 장치 구성
-| 장치 종류 | 수량 | 필요 프로필 | 비고 |
-|-----------|------|------------|------|
+### Device Configuration
+| Device Type | Qty | Required Profiles | Notes |
+|-------------|-----|-------------------|-------|
 
-### 네트워크 설계
-- 예상 총 대역폭: [계산값] Mbps
-- 스위치 권장: 기가비트/POE 여부
-- VLAN 분리: 카메라/출입통제/관리망
+### Network Design
+- Estimated total bandwidth: [calculated value] Mbps
+- Switch recommendation: Gigabit / PoE required?
+- VLAN segmentation: camera / access control / management networks
 
-### ONVIF 프로필 요약
-- 필수 프로필: [목록]
-- 권장 추가: [목록]
+### ONVIF Profile Summary
+- Required profiles: [list]
+- Recommended additions: [list]
 
-### 통합 주의사항
-1. [주의사항]
+### Integration Considerations
+1. [Key consideration]
 
-### 보안 권장사항
-- [조언]
+### Security Recommendations
+- [Security design advice]
 
-### 구현 단계
-1. Phase 1: [기본]
-2. Phase 2: [확장]
+### Implementation Phases
+1. Phase 1: [Foundation]
+2. Phase 2: [Expansion]
 
-### 호환 장치 확인
+### Verify Compatible Devices
 - https://www.onvif.org/conformant-products/
 ```

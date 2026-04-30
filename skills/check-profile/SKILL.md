@@ -1,70 +1,70 @@
 ---
 name: check-profile
-description: 장치 유형이나 요구사항을 입력하면 적합한 ONVIF 프로필과 애드온 조합을 분석하고 추천합니다. 예: /onvif-pro:check-profile IP카메라 H.265 PTZ, /onvif-pro:check-profile 출입통제 생체인식
+description: Analyzes a device type or set of requirements and recommends the optimal ONVIF profile and add-on combination. Examples: /onvif-pro:check-profile IP camera H.265 PTZ, /onvif-pro:check-profile access control biometrics
 ---
 
 # ONVIF Profile Check Skill
 
-사용자가 제공한 장치 유형 또는 요구사항(`$ARGUMENTS`)을 분석하여 최적의 ONVIF 프로필 및 애드온 조합을 추천합니다.
+Analyzes the device type or requirements provided in `$ARGUMENTS` and recommends the optimal combination of ONVIF profiles and add-ons.
 
-## 분석 절차
+## Analysis Procedure
 
-### 1단계: 장치/요구사항 분류
-`$ARGUMENTS`에서 다음을 파악하세요:
-- **장치 유형**: 카메라, NVR, 출입통제 패널, 카드 리더기, 생체인식 장치, 분석 서버 등
-- **주요 기능**: 영상 스트리밍, 엣지 녹화, 출입통제, 분석, 보안 통신 등
-- **기술 요구사항**: H.265, PTZ, 양방향 오디오, 생체인식, MQTT, TLS 등
+### Step 1: Classify the Device / Requirements
+Extract the following from `$ARGUMENTS`:
+- **Device type**: camera, NVR, access control panel, card reader, biometric device, analytics server, etc.
+- **Key functions**: video streaming, edge recording, access control, analytics, secure communication, etc.
+- **Technical requirements**: H.265, PTZ, two-way audio, biometrics, MQTT, TLS, etc.
 
-### 2단계: 프로필 매핑 로직
+### Step 2: Profile Mapping Logic
 
-아래 기준에 따라 프로필을 매핑하세요:
+Map profiles according to the criteria below:
 
-**영상 관련:**
-- 기본 IP 카메라 스트리밍 → **Profile S** (필수)
-- H.265, HTTPS 스트리밍, 양방향 오디오, OSD → **Profile T** (Profile S를 대체 또는 추가)
-- 카메라 내장 SD카드/스토리지 녹화 → **Profile G** 추가
-- AI 분석 메타데이터(객체/얼굴/번호판) → **Profile M** 추가
+**Video-related:**
+- Basic IP camera streaming → **Profile S** (required)
+- H.265, HTTPS streaming, two-way audio, OSD → **Profile T** (replaces or supplements Profile S)
+- Camera with built-in SD card / local storage recording → add **Profile G**
+- AI analytics metadata (object/face/license plate) → add **Profile M**
 
-**출입통제 관련:**
-- 전자 도어 잠금/해제 제어 → **Profile C** (필수)
-- 자격증명/일정/접근규칙 중앙 관리 → **Profile A** 추가
-- 카드 리더기, 생체인식 리더기, 키패드 → **Profile D** (필수)
+**Access control-related:**
+- Electronic door lock/unlock control → **Profile C** (required)
+- Centralized credential/schedule/access rule management → add **Profile A**
+- Card readers, biometric readers, keypads → **Profile D** (required)
 
-**보안 통신:**
-- 암호화 TLS 통신 표준화 → **TLS Configuration Add-on** (프로필과 함께 사용)
+**Secure communications:**
+- Standardized encrypted TLS communication → **TLS Configuration Add-on** (use alongside a profile)
 
-### 3단계: 출력 형식
+### Step 3: Output Format
 
-다음 형식으로 추천 결과를 제공하세요:
+Provide the recommendation in the following format:
 
 ```
-## ONVIF 프로필 분석 결과
+## ONVIF Profile Analysis Result
 
-**입력 장치/요구사항:** [입력값 요약]
+**Input device/requirements:** [summary of input]
 
-### ✅ 필수 적용 프로필
-| 프로필 | 이유 | 핵심 기능 |
-|--------|------|-----------|
+### ✅ Required Profiles
+| Profile | Reason | Key Features |
+|---------|--------|--------------|
 | Profile X | ... | ... |
 
-### 📦 권장 추가 프로필/애드온
-| 프로필/애드온 | 조건 | 제공 기능 |
-|---------------|------|-----------|
-| Profile Y | [조건] 경우 추가 | ... |
+### 📦 Recommended Additional Profiles / Add-ons
+| Profile/Add-on | Condition | Provided Features |
+|----------------|-----------|-------------------|
+| Profile Y | Add if [condition] | ... |
 
-### ⚠️ 주의사항
-- 조건부 기능: [조건부 기능 목록]
-- 버전 고려사항: [관련 버전 이슈]
-- 적합성 확인: [확인 필요 사항]
+### ⚠️ Notes
+- Conditional features: [list of conditional features]
+- Version considerations: [relevant version notes]
+- Conformance verification: [items to verify]
 
-### 🏗️ 시스템 구성 예시
-[장치들의 연결 구조 설명]
+### 🏗️ Example System Configuration
+[Description of how devices connect]
 
-### 📌 다음 단계
-- [권장 조치 사항들]
+### 📌 Next Steps
+- [Recommended actions]
 ```
 
-### 4단계: 실무 조언 추가
-- 해당 프로필 조합을 사용하는 실제 시스템 통합 시 주의점
-- 제조사 호환성 확인 방법 (onvif.org/conformant-products/)
-- 테스트 및 검증 방법
+### Step 4: Add Practical Advice
+- Real-world integration considerations for the recommended profile combination
+- How to verify manufacturer compatibility (onvif.org/conformant-products/)
+- Testing and validation approach
