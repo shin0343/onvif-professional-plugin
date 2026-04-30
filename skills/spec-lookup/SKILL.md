@@ -1,4 +1,5 @@
 ---
+name: spec-lookup
 description: 특정 ONVIF 서비스, WSDL, XSD 스키마, 또는 사양 문서에 대한 상세 정보를 조회합니다. 예: /onvif-pro:spec-lookup Media2, /onvif-pro:spec-lookup analytics.wsdl, /onvif-pro:spec-lookup PTZ
 ---
 

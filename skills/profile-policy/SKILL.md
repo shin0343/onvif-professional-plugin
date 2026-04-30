@@ -1,4 +1,5 @@
 ---
+name: profile-policy
 description: ONVIF Profile Policy와 Add-on 개념을 설명합니다. 프로필/애드온의 생성·수정·폐기 프로세스, Add-on과 Profile의 차이, Profile Q 폐기 이력 등을 안내합니다. 예: /onvif-pro:profile-policy add-on이란, /onvif-pro:profile-policy profile-q, /onvif-pro:profile-policy 새 프로필 제안
 ---
 

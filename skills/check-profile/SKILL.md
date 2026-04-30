@@ -1,4 +1,5 @@
 ---
+name: check-profile
 description: 장치 유형이나 요구사항을 입력하면 적합한 ONVIF 프로필과 애드온 조합을 분석하고 추천합니다. 예: /onvif-pro:check-profile IP카메라 H.265 PTZ, /onvif-pro:check-profile 출입통제 생체인식
 ---
 

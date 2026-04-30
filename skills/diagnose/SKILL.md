@@ -1,4 +1,5 @@
 ---
+name: diagnose
 description: ONVIF 장치 간 호환성 문제, 통신 오류, 기능 불일치 등을 진단합니다. 증상을 설명하면 체계적인 진단 트리와 해결책을 제공합니다. 예: /onvif-pro:diagnose 카메라와 NVR 연결 안됨, /onvif-pro:diagnose PTZ 제어 안됨
 ---
 

@@ -1,4 +1,5 @@
 ---
+name: design-system
 description: 고객 요구사항을 바탕으로 ONVIF 기반 보안 시스템 아키텍처를 설계합니다. 예: /onvif-pro:design-system 공장 CCTV 50채널 + 출입통제 10개 도어 + AI 분석, /onvif-pro:design-system 소규모 오피스 카메라 5대 암호화 통신 필수
 ---
 

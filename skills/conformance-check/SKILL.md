@@ -1,4 +1,5 @@
 ---
+name: conformance-check
 description: 특정 ONVIF 장치나 시스템의 ONVIF 적합성(Conformance) 준수 여부를 검토합니다. 예: /onvif-pro:conformance-check Profile T 카메라, /onvif-pro:conformance-check 출입통제 시스템 Profile C+A
 ---
 
