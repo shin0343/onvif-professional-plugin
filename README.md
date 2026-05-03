@@ -8,45 +8,32 @@ Provides Claude with deep expertise across all ONVIF profiles (S/T/G/C/A/D/M), n
 
 The agent responds **in the same language you write in** — English or Korean.
 
-## Installation & Testing
+---
+
+## Installation
+
+### Step 1 — Add the marketplace
 
 ```bash
-# Load plugin locally for testing
-claude --plugin-dir ./onvif-professional-plugin
+/plugin marketplace add shin0343/onvif-professional-plugin
+```
 
-# Verify agent is active
+### Step 2 — Install the plugin
+
+```bash
+/plugin install onvif-pro@onvif-pro
+```
+
+### Step 3 — Verify installation
+
+```bash
 /agents
-
-# List available skills
 /help
 ```
 
-## Directory Structure
+You should see **onvif-expert** in `/agents` and all `/onvif-pro:*` skills listed under `/help`.
 
-```
-onvif-professional-plugin/
-├── .claude-plugin/
-│   └── plugin.json              # Plugin manifest
-├── agents/
-│   └── onvif-expert.md          # ONVIF expert main agent
-├── skills/
-│   ├── check-profile/
-│   │   └── SKILL.md             # Profile analysis & recommendation
-│   ├── diagnose/
-│   │   └── SKILL.md             # Compatibility diagnostics
-│   ├── spec-lookup/
-│   │   └── SKILL.md             # WSDL/spec document lookup (verified URLs)
-│   ├── design-system/
-│   │   └── SKILL.md             # System architecture design
-│   ├── conformance-check/
-│   │   └── SKILL.md             # Conformance validation checklist
-│   └── profile-policy/
-│       └── SKILL.md             # Profile Policy & Add-on concept guidance
-├── hooks/
-│   └── hooks.json               # ONVIF keyword detection hooks
-├── settings.json                # Default agent settings
-└── onvif-spec-summary.md        # ONVIF specification reference summary
-```
+---
 
 ## Available Skills
 
@@ -58,6 +45,8 @@ onvif-professional-plugin/
 | System design | `/onvif-pro:design-system [requirements]` | System architecture design |
 | Conformance check | `/onvif-pro:conformance-check [profile]` | Conformance requirements checklist |
 | Policy / Add-on | `/onvif-pro:profile-policy [topic]` | Profile Policy, Add-on concepts, Profile Q deprecation |
+
+---
 
 ## Usage Examples
 
@@ -82,23 +71,77 @@ onvif-professional-plugin/
 /onvif-pro:profile-policy profile-q deprecation reason
 ```
 
+---
+
+## Local Development & Testing
+
+```bash
+# Clone the repo
+git clone https://github.com/shin0343/onvif-professional-plugin.git
+
+# Load plugin locally (no installation required)
+claude --plugin-dir ./onvif-professional-plugin
+
+# After editing, reload without restarting
+/reload-plugins
+```
+
+---
+
 ## Supported ONVIF Specification Scope
 
 ### Profiles
-- **Profile S** — IP video streaming (H.264, RTSP, PTZ)
-- **Profile T** — Advanced video streaming (H.265, HTTPS, two-way audio)
-- **Profile G** — Edge storage and recording retrieval
-- **Profile C** — Access control door management and events
-- **Profile A** — Access control credentials/schedules/rules management
-- **Profile D** — Access control peripherals (card readers, biometrics)
-- **Profile M** — Analytics metadata and events (AI object classification)
-- ~~**Profile Q**~~ — Deprecated April 1, 2022 (no new conformance claims accepted)
+
+| Profile | Target | Key Features |
+|---------|--------|-------------|
+| **Profile S** | IP video streaming | H.264, RTSP, PTZ |
+| **Profile T** | Advanced video streaming | H.265, HTTPS, two-way audio |
+| **Profile G** | Edge storage & recording | SD card recording, replay, export |
+| **Profile C** | Door control | Lock/unlock, access events |
+| **Profile A** | Access control config | Credentials, schedules, access rules |
+| **Profile D** | Access control peripherals | Card readers, biometrics, keypads |
+| **Profile M** | Analytics & metadata | AI object classification, MQTT events |
+| ~~**Profile Q**~~ | *(Deprecated April 1, 2022)* | Superseded by Profile S/T |
 
 ### Add-ons
-- **TLS Configuration Add-on** — Encrypted communication setup (v1.0 / v2.0)
+
+| Add-on | Description |
+|--------|-------------|
+| **TLS Configuration Add-on** | Encrypted communication setup (v1.0 / v2.0) |
 
 ### Network Interface Specifications (30+ services)
+
 Core, Media, Media2, PTZ, Imaging, Streaming, Analytics, Recording Control, Recording Search, Replay, Access Control, Door Control, Access Rules, Credential, Schedule, Authentication Behavior, Thermal, Device IO, Security, Cloud Integration, Uplink, Application Management, Resource Query, Action Engine, Display, WebRTC, and more.
+
+---
+
+## Directory Structure
+
+```
+onvif-professional-plugin/
+├── .claude-plugin/
+│   ├── plugin.json              # Plugin manifest (name, version, metadata)
+│   └── marketplace.json         # Marketplace registry (enables /plugin install)
+├── agents/
+│   └── onvif-expert.md          # ONVIF expert main agent
+├── skills/
+│   ├── check-profile/
+│   │   └── SKILL.md             # Profile analysis & recommendation
+│   ├── diagnose/
+│   │   └── SKILL.md             # Compatibility diagnostics
+│   ├── spec-lookup/
+│   │   └── SKILL.md             # WSDL/spec document lookup (verified URLs)
+│   ├── design-system/
+│   │   └── SKILL.md             # System architecture design
+│   ├── conformance-check/
+│   │   └── SKILL.md             # Conformance validation checklist
+│   └── profile-policy/
+│       └── SKILL.md             # Profile Policy & Add-on concept guidance
+└── hooks/
+    └── hooks.json               # ONVIF keyword detection hooks
+```
+
+---
 
 ## Official ONVIF Resources
 
@@ -106,6 +149,8 @@ Core, Media, Media2, PTZ, Imaging, Streaming, Analytics, Recording Control, Reco
 - Conformant products: https://www.onvif.org/conformant-products/
 - Conformance process: https://www.onvif.org/profiles/conformance/
 - GitHub (specifications): https://github.com/onvif/specs
+
+---
 
 ## License
 

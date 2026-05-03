@@ -1,0 +1,15 @@
+{
+  "name": "onvif-pro",
+  "description": "Expert plugin for ONVIF standards in IP-based physical security systems",
+  "owner": {
+    "name": "shin0343"
+  },
+  "plugins": [
+    {
+      "name": "onvif-pro",
+      "source": "./",
+      "description": "Expert plugin for ONVIF standards in IP-based physical security systems (CCTV / NVR / Access Control). Covers all ONVIF profiles (S/T/G/C/A/D/M), conformance process, system design, and diagnostics.",
+      "version": "1.0.0"
+    }
+  ]
+}

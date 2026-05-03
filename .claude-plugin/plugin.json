@@ -1,0 +1,11 @@
+{
+  "name": "onvif-pro",
+  "description": "Expert plugin for ONVIF standards in IP-based physical security systems (CCTV / NVR / Access Control)",
+  "version": "1.0.0",
+  "author": {
+    "name": "shin0343"
+  },
+  "license": "MIT",
+  "keywords": ["onvif", "cctv", "nvr", "access-control", "security", "profile-s", "profile-t", "profile-g", "profile-c", "profile-m"],
+  "repository": "https://github.com/shin0343/onvif-professional-plugin"
+}
